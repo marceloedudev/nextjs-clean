@@ -1,0 +1,20 @@
+{
+    "name": "React Storefront",
+    "short_name": "Storefront",
+    "icons": [{
+            "src": "/icon/favicon.ico",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/icon/favicon.ico",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "background_color": "#222222",
+    "description": "NextJS",
+    "display": "fullscreen",
+    "start_url": "/",
+    "theme_color": "#333333"
+}
