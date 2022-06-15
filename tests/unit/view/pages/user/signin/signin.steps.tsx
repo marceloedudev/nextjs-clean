@@ -4,7 +4,7 @@ import { expect } from '@jest/globals'
 import { defineFeature, loadFeature } from 'jest-cucumber'
 import path from 'path'
 import AppProvider from '@/view/hooks/AppProvider'
-import SignInFactory from '@/main/pages/user/signin/SignInFactory'
+import SignInFactory from '@/main/pages/user/signin/factory/SignInFactory'
 import SignIn from '@/view/pages/user/signin'
 
 const pathMakeFeature = path.resolve(path.join(__dirname, 'signin.feature'))

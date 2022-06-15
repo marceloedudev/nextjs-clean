@@ -2,6 +2,7 @@ import UserAuthToken from '@/domain/aggregates/auth/UserAuthToken'
 import UserSigninInputRequest from '@/domain/aggregates/auth/UserSigninInputRequest'
 import UserEmail from '@/domain/entity/user/UserEmail'
 import UserPassword from '@/domain/entity/user/UserPassword'
+import ErrorBoundary from '@/domain/errors/ErrorBoundary'
 import PageRouter from '@/infra/nextjs/PageRouter'
 import AdaptersFactory from '@/main/factory/AdaptersFactory'
 import RoutesFactory from '@/main/factory/RoutesFactory'
@@ -53,7 +54,7 @@ class UserSignInHandler {
         .set(userLogin.getAccessToken())
       this.pageRouter.push(`${this.routesFactory.createUserRoute().profile()}`)
     } catch (err) {
-      ToastError({ message: err.getErrorMessage() })
+      ToastError({ message: new ErrorBoundary(err).getMessage() })
       setLoading(false)
     }
   }

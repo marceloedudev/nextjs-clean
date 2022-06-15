@@ -1,6 +1,6 @@
 # NextJS Clean Architecture
 
-> ### 📚 Requirements:
+> ### 📚 Requirements
 
 - [NodeJS](https://nodejs.org/en/)
 - [Docker](https://www.docker.com/) (optional)

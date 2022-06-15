@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSignIn } from '../contexts/useSignIn'
 import useUserToken from '@/view/hooks/useUserToken'
-import UserSignInHandler from '@/domain/pages/user/signin/UserSignInHandler'
+import UserSignInHandler from '@/main/pages/user/signin/handler/UserSignInHandler'
 
 export type UseFormSignInProps = {
   userSignInHandler: UserSignInHandler

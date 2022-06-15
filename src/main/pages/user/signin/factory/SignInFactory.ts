@@ -1,5 +1,5 @@
-import UserSignInHandler from '@/domain/pages/user/signin/UserSignInHandler'
 import RoutesFactory from '@/main/factory/RoutesFactory'
+import UserSignInHandler from '../handler/UserSignInHandler'
 
 class SignInFactory {
   private routesFactory: RoutesFactory

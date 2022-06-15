@@ -1,4 +1,4 @@
-import UserAccessTokenAdapter from '@/main/adapters/user-access-token'
+import UserAccessTokenAdapter from '@/main/adapters/auth/user-access-token'
 import AdaptersFactory from '@/main/factory/AdaptersFactory'
 
 class AxiosInterceptorRequest {

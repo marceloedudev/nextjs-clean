@@ -1,25 +1,28 @@
 import axios from 'axios'
 
-let failedQueue = []
-
-const processQueue = (error, token = null) => {
-  failedQueue.forEach((prom: PromiseConstructor) => {
-    if (error) {
-      prom.reject(error)
-    } else {
-      prom.resolve(token)
-    }
-  })
-
-  failedQueue = []
-}
-
 class AxiosInterceptorResponse {
-  constructor(
-    private readonly error: any,
-    private readonly logged: boolean,
-    private readonly refreshTokenUseCase
-  ) {}
+  private failedQueue = []
+  private error: any
+  private logged: boolean
+  private refreshTokenUseCase: () => Promise<any>
+
+  constructor({ error, logged, refreshTokenUseCase }) {
+    this.error = error
+    this.logged = logged
+    this.refreshTokenUseCase = refreshTokenUseCase
+    this.failedQueue = []
+  }
+
+  private processQueue(error, token = null) {
+    this.failedQueue.forEach((prom: PromiseConstructor) => {
+      if (error) {
+        prom.reject(error)
+      } else {
+        prom.resolve(token)
+      }
+    })
+    this.failedQueue = []
+  }
 
   failed() {
     const originalRequest = this.error.config
@@ -30,10 +33,9 @@ class AxiosInterceptorResponse {
       this.logged
     ) {
       let isRefreshing = false
-
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
-          failedQueue.push({ resolve, reject })
+          this.failedQueue.push({ resolve, reject })
         })
           .then((token) => {
             originalRequest.headers['authorization'] = `Bearer ${token}`
@@ -43,10 +45,8 @@ class AxiosInterceptorResponse {
             return Promise.reject(err)
           })
       }
-
       originalRequest._retry = true
       isRefreshing = true
-
       return new Promise((resolve, reject) => {
         this.refreshTokenUseCase()
           .then(({ accessToken }) => {
@@ -54,12 +54,11 @@ class AxiosInterceptorResponse {
               'authorization'
             ] = `Bearer ${accessToken}`
             originalRequest.headers['authorization'] = `Bearer ${accessToken}`
-            processQueue(null, accessToken)
-
+            this.processQueue(null, accessToken)
             resolve(axios(originalRequest))
           })
           .catch((err) => {
-            processQueue(err, null)
+            this.processQueue(err, null)
             reject(err)
           })
           .finally(() => {

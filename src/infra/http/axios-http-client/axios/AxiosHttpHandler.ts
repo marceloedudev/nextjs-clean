@@ -8,7 +8,7 @@ import axios, {
 import AxiosInterceptorRequest from './interceptors/interceptor-request'
 import AxiosInterceptorResponse from './interceptors/interceptor-response'
 
-class AxiosHttp {
+class AxiosHttpHandler {
   private axiosClient: Axios
   private apiUrl: string
 
@@ -40,10 +40,10 @@ class AxiosHttp {
         const refreshToken = userRefreshTokenAdapter.get()
         const accessToken = userAccessTokenAdapter.get()
         const isLogged = !!accessToken?.length
-        const axiosInterceptorResponse = new AxiosInterceptorResponse(
+        const axiosInterceptorResponse = new AxiosInterceptorResponse({
           error,
-          isLogged,
-          async () => {
+          logged: isLogged,
+          refreshTokenUseCase: async () => {
             try {
               const tokenData: UserAuthToken =
                 await refreshTokenUserUsecase.execute({
@@ -60,7 +60,7 @@ class AxiosHttp {
               return Promise.reject(err)
             }
           }
-        )
+        })
         return axiosInterceptorResponse
           .failed()
           .then((res) => {
@@ -79,4 +79,4 @@ class AxiosHttp {
   }
 }
 
-export default AxiosHttp
+export default AxiosHttpHandler

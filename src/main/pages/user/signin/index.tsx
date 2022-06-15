@@ -1,6 +1,6 @@
 import SignIn from '@/view/pages/user/signin'
 import React from 'react'
-import SignInFactory from './SignInFactory'
+import SignInFactory from './factory/SignInFactory'
 
 const signInFactory = new SignInFactory()
 

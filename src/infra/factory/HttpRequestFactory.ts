@@ -1,15 +1,15 @@
-import AxiosHttpBasic from '../http/axios-http-basic'
-import AxiosHttpClient from '../http/axios-http-client'
+import HttpRequestInterceptorsAdapter from '../http/axios-http-client/adapters/HttpRequestInterceptorsAdapter'
+import HttpRequestBasicAdapter from '../http/axios-http-client/adapters/HttpRequestBasicAdapter'
 
 class HttpRequestFactory {
   constructor(private apiUrl?: string) {}
 
   createHttpClient() {
-    return new AxiosHttpClient(this.apiUrl)
+    return new HttpRequestInterceptorsAdapter()
   }
 
   createHttpBasic() {
-    return new AxiosHttpBasic(this.apiUrl)
+    return new HttpRequestBasicAdapter()
   }
 }
 

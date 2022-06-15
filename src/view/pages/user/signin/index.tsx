@@ -9,7 +9,7 @@ import SubmitButton from './components/SubmitButton'
 import { useThemeStyled } from '@/view/hooks/useThemeStyled'
 import React from 'react'
 import RoutesFactory from '@/main/factory/RoutesFactory'
-import UserSignInHandler from '@/domain/pages/user/signin/UserSignInHandler'
+import UserSignInHandler from '@/main/pages/user/signin/handler/UserSignInHandler'
 
 type SignInProps = {
   routesFactory: RoutesFactory

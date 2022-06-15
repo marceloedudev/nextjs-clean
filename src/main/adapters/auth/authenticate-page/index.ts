@@ -13,7 +13,7 @@ class AuthenticatePageAdapter {
     this.routesFactory = new RoutesFactory()
   }
 
-  securePage = async (ctx) => {
+  async securePage(ctx) {
     const cookie = CookiesAdapter.nextCookies(ctx)
     if (!CookiesAdapter.isValidCookie(cookie)) {
       ServerSideAdapter.redirectPage(
@@ -28,7 +28,7 @@ class AuthenticatePageAdapter {
     } as AuthenticatePageProps
   }
 
-  invalidateUser = async (ctx) => {
+  async invalidateUser(ctx) {
     const cookie = CookiesAdapter.nextCookies(ctx)
     if (CookiesAdapter.isValidCookie(cookie)) {
       ServerSideAdapter.redirectPage(

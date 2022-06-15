@@ -1,4 +1,4 @@
-import { AuthenticatePageProps } from '@/main/adapters/authenticate-page'
+import { AuthenticatePageProps } from '@/main/adapters/auth/authenticate-page'
 import { useRecoilValue } from 'recoil'
 import { currentAccountState } from '../atoms'
 

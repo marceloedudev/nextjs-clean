@@ -1,4 +1,4 @@
-import { AuthenticatePageProps } from '@/main/adapters/authenticate-page'
+import { AuthenticatePageProps } from '@/main/adapters/auth/authenticate-page'
 import AdaptersFactory from '@/main/factory/AdaptersFactory'
 import MakeProfile from '@/main/pages/user/profile'
 import useValidateUser from '@/view/hooks/useValidateUser'
