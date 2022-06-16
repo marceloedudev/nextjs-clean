@@ -1,28 +1,32 @@
-import { IStorage } from '../istorage'
+import { IStorage } from '../../../main/interfaces/storage/istorage'
 import { Cookies } from 'react-cookie'
 
-const cookies = new Cookies()
-
 class CookieStorage implements IStorage {
-  static get(key: string): any | null {
+  private cookies: Cookies
+
+  constructor() {
+    this.cookies = new Cookies()
+  }
+
+  get(key: string) {
     try {
-      const item = cookies.get(key)
+      const item = this.cookies.get(key)
       return item ? JSON.parse(item) : null
     } catch (err) {
       return null
     }
   }
 
-  static destroy(key: string): void {
-    cookies.remove(key)
+  destroy(key: string) {
+    this.cookies.remove(key)
   }
 
-  static set(key: string, value: any): void {
+  set(key: string, value: any) {
     if (value) {
-      cookies.set(key, JSON.stringify(value), { maxAge: 60 * 60 * 24 })
+      this.cookies.set(key, JSON.stringify(value), { maxAge: 60 * 60 * 24 })
       return
     }
-    cookies.remove(key)
+    this.cookies.remove(key)
   }
 }
 

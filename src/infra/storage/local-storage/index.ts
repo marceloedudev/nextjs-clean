@@ -1,7 +1,7 @@
-import { IStorage } from '../istorage'
+import { IStorage } from '../../../main/interfaces/storage/istorage'
 
 class LocalStorage implements IStorage {
-  static get(key: string): any | null {
+  get(key: string) {
     try {
       const item = localStorage.getItem(key)
       return item ? JSON.parse(item) : null
@@ -10,16 +10,16 @@ class LocalStorage implements IStorage {
     }
   }
 
-  static destroy(key: string): void {
+  destroy(key: string) {
     localStorage.removeItem(key)
   }
 
-  static set(key: string, value: any): void {
+  set(key: string, value: any) {
     if (value) {
       localStorage.setItem(key, JSON.stringify(value))
       return
     }
-    LocalStorage.destroy(key)
+    this.destroy(key)
   }
 }
 

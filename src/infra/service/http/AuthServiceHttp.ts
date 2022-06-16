@@ -4,8 +4,9 @@ import {
   UserTokensRequest,
   UserTokensResponse
 } from '@/domain/dto/user/tokens-model'
-import HttpClientResponse from '@/infra/http/HttpClientResponse'
-import { HttpClient } from '@/infra/http/http-client'
+import HttpClientResponse from '@/domain/entity/auth/HttpClientResponse'
+import { HttpClient } from '@/main/interfaces/http/http-client'
+
 import AuthServiceHttpImpl from '@/services/http/AuthServiceHttpImpl'
 
 class AuthServiceHttp implements AuthServiceHttpImpl {

@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
 import { AppError } from '../../errors/AppError'
-import { FieldValidator } from '../../types'
+import { FieldValidator } from '../../../../main/interfaces/validators'
 
 export class RequiredValidator implements FieldValidator {
   private field: string

@@ -1,13 +1,17 @@
 import { getLuminance, lighten } from 'polished'
 
-export const polishedLighten = (amount: string | number, color: string) => {
-  return lighten(amount, color)
+class PolishedAdapter {
+  polishedLighten(amount: string | number, color: string) {
+    return lighten(amount, color)
+  }
+
+  polishedGetLuminance(color: string) {
+    return getLuminance(color)
+  }
+
+  getColorContrast = (hexColor) => {
+    return this.polishedGetLuminance(hexColor) > 0.179 ? '#000' : '#fff'
+  }
 }
 
-export const polishedGetLuminance = (color: string) => {
-  return getLuminance(color)
-}
-
-export const getColorContrast = (hexColor) => {
-  return polishedGetLuminance(hexColor) > 0.179 ? '#000' : '#fff'
-}
+export default PolishedAdapter

@@ -1,4 +1,8 @@
-import { FieldValidator, TypesValidator, TypesValidatorEnum } from '../../types'
+import {
+  FieldValidator,
+  TypesValidator,
+  TypesValidatorEnum
+} from '../../../../main/interfaces/validators'
 
 import { AppError } from '../../errors/AppError'
 

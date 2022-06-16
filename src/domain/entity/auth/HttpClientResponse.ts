@@ -1,4 +1,4 @@
-import { HttpResponse } from '@/infra/http/http-client'
+import { HttpResponse } from '@/main/interfaces/http/http-client'
 
 class HttpClientResponse<T> {
   private statusCode: number

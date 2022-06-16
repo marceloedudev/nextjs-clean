@@ -1,6 +1,6 @@
 import UserEmailFactory from '@/domain/factory/user/UserEmailFactory'
 import { AppError } from '../../errors/AppError'
-import { FieldValidator } from '../../types'
+import { FieldValidator } from '../../../../main/interfaces/validators'
 
 export class EmailValidator implements FieldValidator {
   private field: string

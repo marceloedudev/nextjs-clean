@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
-import HttpClientResponse from '@/infra/http/HttpClientResponse'
-import { HttpRequest, HttpResponse } from '@/infra/http/http-client'
+import { HttpRequest, HttpResponse } from '@/main/interfaces/http/http-client'
+import HttpClientResponse from '@/domain/entity/auth/HttpClientResponse'
 
 class HttpBaseRequest {
   async request(

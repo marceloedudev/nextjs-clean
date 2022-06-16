@@ -69,7 +69,7 @@ $ pnpm test:unit:watch
 # Unit tests with coverage
 $ pnpm test:coverage
 
-# E2E Tests
+# E2E tests
 $ pnpm test:cypress:ci
 
 # Contract tests

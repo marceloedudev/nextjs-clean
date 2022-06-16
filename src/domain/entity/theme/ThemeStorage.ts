@@ -1,10 +1,11 @@
-import LocalStorage from '@/infra/storage/local-storage'
+import StorageFactory from '@/infra/factory/StorageFactory'
 import ThemeFactory from './ThemeFactory'
 
 class ThemeStorage {
   private themes = []
   private themeFactory: ThemeFactory
   private dbFieldStorage = 'theme'
+  private localStorage
 
   constructor() {
     this.themeFactory = new ThemeFactory()
@@ -12,10 +13,11 @@ class ThemeStorage {
       this.themeFactory.createLightTheme().getThemeName(),
       this.themeFactory.createDarkTheme().getThemeName()
     ]
+    this.localStorage = new StorageFactory().createLocalStorage()
   }
 
   getThemeNameStorage() {
-    const themeStorage = LocalStorage.get(this.dbFieldStorage)
+    const themeStorage = this.localStorage.get(this.dbFieldStorage)
     if (themeStorage?.length && this.themes.includes(themeStorage)) {
       return themeStorage
     }
@@ -26,7 +28,7 @@ class ThemeStorage {
     if (!themeName) {
       return
     }
-    LocalStorage.set(this.dbFieldStorage, themeName)
+    this.localStorage.set(this.dbFieldStorage, themeName)
   }
 }
 

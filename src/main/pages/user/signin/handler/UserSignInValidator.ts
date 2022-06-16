@@ -50,7 +50,7 @@ class UserSignInValidator extends NotificationContext {
   }
 
   errorsFormatted() {
-    return ValidationShape.errorsValidateToObject(this.notications)
+    return ValidationShape.errorsValidateToObject(this.getNotifications())
   }
 }
 

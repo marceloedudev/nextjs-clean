@@ -7,15 +7,17 @@ export interface AuthenticatePageProps {
 }
 
 class AuthenticatePageAdapter {
-  routesFactory: RoutesFactory
+  private routesFactory: RoutesFactory
+  private cookiesAdapter: CookiesAdapter
 
   constructor() {
     this.routesFactory = new RoutesFactory()
+    this.cookiesAdapter = new CookiesAdapter()
   }
 
   async securePage(ctx) {
-    const cookie = CookiesAdapter.nextCookies(ctx)
-    if (!CookiesAdapter.isValidCookie(cookie)) {
+    const cookie = this.cookiesAdapter.nextCookies(ctx)
+    if (!this.cookiesAdapter.isValidCookie(cookie)) {
       ServerSideAdapter.redirectPage(
         ctx,
         `${this.routesFactory.createUserRoute().signin()}`
@@ -29,8 +31,8 @@ class AuthenticatePageAdapter {
   }
 
   async invalidateUser(ctx) {
-    const cookie = CookiesAdapter.nextCookies(ctx)
-    if (CookiesAdapter.isValidCookie(cookie)) {
+    const cookie = this.cookiesAdapter.nextCookies(ctx)
+    if (this.cookiesAdapter.isValidCookie(cookie)) {
       ServerSideAdapter.redirectPage(
         ctx,
         `${this.routesFactory.createUserRoute().profile()}`

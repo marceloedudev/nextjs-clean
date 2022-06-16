@@ -1,17 +1,17 @@
-import CookieStorage from '@/infra/storage/cookie-storage'
+import StorageFactory from '@/infra/factory/StorageFactory'
 
 const keyToken = 'AToken'
 
 export default class UserAccessTokenAdapter {
   get() {
-    return CookieStorage.get(keyToken)
+    return new StorageFactory().createCookieStorage().get(keyToken)
   }
 
   set(value) {
-    CookieStorage.set(keyToken, value)
+    new StorageFactory().createCookieStorage().set(keyToken, value)
   }
 
   remove() {
-    CookieStorage.destroy(keyToken)
+    new StorageFactory().createCookieStorage().destroy(keyToken)
   }
 }

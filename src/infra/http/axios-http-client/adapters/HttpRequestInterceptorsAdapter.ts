@@ -1,5 +1,8 @@
-import { HttpClient, HttpRequest } from '../../http-client'
-import HttpClientResponse from '../../HttpClientResponse'
+import {
+  HttpClient,
+  HttpRequest
+} from '../../../../main/interfaces/http/http-client'
+import HttpClientResponse from '../../../../domain/entity/auth/HttpClientResponse'
 import HttpClientFactory from '../factory/HttpClientFactory'
 import HttpBaseRequest from '../base/HttpBaseRequest'
 

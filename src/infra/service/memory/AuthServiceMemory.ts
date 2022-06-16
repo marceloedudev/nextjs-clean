@@ -5,7 +5,7 @@ import {
   UserTokensRequest,
   UserTokensResponse
 } from '@/domain/dto/user/tokens-model'
-import HttpClientResponse from '@/infra/http/HttpClientResponse'
+import HttpClientResponse from '@/domain/entity/auth/HttpClientResponse'
 import AuthServiceHttpImpl from '@/services/http/AuthServiceHttpImpl'
 import UserAuthTokenObjectMother from '../../../../tests/unit/domain/aggregates/auth/UserAuthTokenObjectMother'
 

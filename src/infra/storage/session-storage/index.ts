@@ -1,7 +1,7 @@
-import { IStorage } from '../istorage'
+import { IStorage } from '../../../main/interfaces/storage/istorage'
 
 class SessionStorage implements IStorage {
-  static get(key: string): any | null {
+  get(key: string) {
     try {
       const item = sessionStorage.getItem(key)
       return item ? JSON.parse(item) : null
@@ -10,16 +10,16 @@ class SessionStorage implements IStorage {
     }
   }
 
-  static destroy(key: string): void {
+  destroy(key: string) {
     sessionStorage.removeItem(key)
   }
 
-  static set(key: string, value: any): void {
+  set(key: string, value: any) {
     if (value) {
       sessionStorage.setItem(key, JSON.stringify(value))
       return
     }
-    SessionStorage.destroy(key)
+    this.destroy(key)
   }
 }
 

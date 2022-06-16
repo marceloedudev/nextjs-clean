@@ -1,10 +1,10 @@
 /* eslint-disable import/order */
 import { AppError } from '../../errors/AppError'
-import { FieldValidator } from '../../types'
+import { FieldValidator } from '../../../../main/interfaces/validators'
 import SafeRegexAdapter from '@/infra/safe-regex/SafeRegexAdapter'
 
 export class MatchesValidator implements FieldValidator {
-  safeRegex: SafeRegexAdapter
+  private safeRegex: SafeRegexAdapter
 
   private field: string
 

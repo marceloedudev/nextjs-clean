@@ -1,7 +1,8 @@
+import PolishedAdapter from '@/infra/styles/polished'
 import StyledComponentsAdapter from '@/infra/styles/styled-components'
-import { getColorContrast } from '@/infra/styles/polished'
 
 const styled = new StyledComponentsAdapter()
+const polishedAdapter = new PolishedAdapter()
 
 interface IButtonContainer {
   color: string
@@ -17,7 +18,8 @@ export const Container = styled.tagName('button')<IButtonContainer>`
   cursor: pointer;
   border: 1px solid ${({ color }) => color};
   background-color: ${({ color }) => color};
-  color: ${({ textColor, color }) => textColor ?? getColorContrast(color)};
+  color: ${({ textColor, color }) =>
+    textColor ?? polishedAdapter.getColorContrast(color)};
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.12), 0 2px 6px 0 rgba(0, 0, 0, 0.24);
   border-radius: 5px;
   user-select: none;
@@ -32,7 +34,7 @@ export const Container = styled.tagName('button')<IButtonContainer>`
     border: none;
   }
 
-  .content {
+  & .content {
     display: flex;
     position: relative;
     justify-content: space-between;

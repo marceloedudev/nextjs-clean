@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import { AppError } from '../errors/AppError'
+import { AppError } from '../../../infra/validation/errors/AppError'
 import ValidationBuilder from '@/infra/validation/builder'
 
 export interface FieldValidator {

@@ -4,7 +4,6 @@ import UserEmail from '@/domain/entity/user/UserEmail'
 import UserPassword from '@/domain/entity/user/UserPassword'
 import ErrorBoundary from '@/domain/errors/ErrorBoundary'
 import PageRouter from '@/infra/nextjs/PageRouter'
-import AdaptersFactory from '@/main/factory/AdaptersFactory'
 import RoutesFactory from '@/main/factory/RoutesFactory'
 import UsecaseFactory from '@/main/factory/UsecaseFactory'
 import { ToastError, ToastSuccess } from '@/view/components/Toast'
@@ -15,14 +14,12 @@ class UserSignInHandler {
   private usecaseFactory: UsecaseFactory
   private fieldValidators: UserSignInValidator
   private routesFactory: RoutesFactory
-  private adaptersFactory: AdaptersFactory
 
   constructor() {
     this.pageRouter = new PageRouter()
     this.usecaseFactory = new UsecaseFactory()
     this.fieldValidators = new UserSignInValidator()
     this.routesFactory = new RoutesFactory()
-    this.adaptersFactory = new AdaptersFactory()
   }
 
   async submit(
@@ -49,9 +46,6 @@ class UserSignInHandler {
       ToastSuccess({ message: 'Logged successful' })
       setAccessToken(userLogin.getAccessToken())
       setRefreshToken(userLogin.getRefreshToken())
-      this.adaptersFactory
-        .createUserAccessToken()
-        .set(userLogin.getAccessToken())
       this.pageRouter.push(`${this.routesFactory.createUserRoute().profile()}`)
     } catch (err) {
       ToastError({ message: new ErrorBoundary(err).getMessage() })

@@ -1,7 +1,8 @@
+import PolishedAdapter from '@/infra/styles/polished'
 import StyledComponentsAdapter from '@/infra/styles/styled-components'
-import { getColorContrast } from '@/infra/styles/polished'
 
 const styled = new StyledComponentsAdapter()
+const polishedAdapter = new PolishedAdapter()
 
 interface ISubmitButtonContainer {
   color?: string
@@ -18,7 +19,7 @@ export const Container = styled.tagName('button')<ISubmitButtonContainer>`
   border: 1px solid ${({ color, theme }) => color ?? theme.primary};
   background-color: ${({ color, theme }) => color ?? theme.primary};
   color: ${({ textColor, theme }) =>
-    textColor ?? getColorContrast(theme.primary)};
+    textColor ?? polishedAdapter.getColorContrast(theme.primary)};
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.12), 0 2px 6px 0 rgba(0, 0, 0, 0.24);
   border-radius: 5px;
   cursor: pointer;
@@ -29,12 +30,12 @@ export const Container = styled.tagName('button')<ISubmitButtonContainer>`
   height: 45px;
   justify-content: center;
 
-  &:disabled {
+  & :disabled {
     cursor: not-allowed;
     border: none;
   }
 
-  .content {
+  & .content {
     display: flex;
     position: relative;
     justify-content: space-between;

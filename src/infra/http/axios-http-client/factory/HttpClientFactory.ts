@@ -18,9 +18,7 @@ class HttpClientFactory {
     this.adaptersFactory = new AdaptersFactory()
     this.usecaseFactory = new UsecaseFactory()
     const url = apiUrl ?? AppConfig.ApiUrl
-    if (!this.axiosHttp) {
-      this.axiosHttp = new AxiosHttpHandler(url)
-    }
+    this.axiosHttp = new AxiosHttpHandler(url)
   }
 
   createInstance() {

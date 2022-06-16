@@ -1,6 +1,5 @@
 import { SignInProvider, useSignIn } from './contexts/useSignIn'
 import useFormSignIn, { UseFormSignInProps } from './hooks/useFormSignIn'
-import { EmailIcon } from '@/resources/icons'
 import Input from './components/Input'
 import LinkNavigateBase from './components/LinkNavigateBase'
 import PasswordInput from './components/PasswordInput'
@@ -10,6 +9,7 @@ import { useThemeStyled } from '@/view/hooks/useThemeStyled'
 import React from 'react'
 import RoutesFactory from '@/main/factory/RoutesFactory'
 import UserSignInHandler from '@/main/pages/user/signin/handler/UserSignInHandler'
+import EmailIconBase from './components/EmailIconBase'
 
 type SignInProps = {
   routesFactory: RoutesFactory
@@ -37,7 +37,7 @@ const MakeSignIn: React.FC<SignInProps> = ({
             name="email"
             type="email"
             label="Email"
-            icon={<EmailIcon />}
+            icon={<EmailIconBase />}
             helperText={state.errors?.email?.map(
               (item) => `- ${item.message}. `
             )}

@@ -1,4 +1,7 @@
-import { FieldValidator, TypesValidator } from '../../types'
+import {
+  FieldValidator,
+  TypesValidator
+} from '../../../../main/interfaces/validators'
 
 /* eslint-disable import/order */
 import { AppError } from '../../errors/AppError'

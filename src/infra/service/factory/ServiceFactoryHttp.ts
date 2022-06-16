@@ -1,4 +1,4 @@
-import { HttpClient } from '@/infra/http/http-client'
+import { HttpClient } from '@/main/interfaces/http/http-client'
 import ServiceHttpBaseUrl from '../base-url/ServiceHttpBaseUrl'
 import AuthServiceHttp from '../http/AuthServiceHttp'
 import ServiceFactoryImpl from './ServiceFactoryImpl'

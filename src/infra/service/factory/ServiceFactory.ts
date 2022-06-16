@@ -1,6 +1,6 @@
 /* eslint-disable no-process-env */
 import AppConfig from '@/config/AppConfig'
-import { HttpClient } from '@/infra/http/http-client'
+import { HttpClient } from '@/main/interfaces/http/http-client'
 import ServiceFactoryHttp from './ServiceFactoryHttp'
 import ServiceFactoryMemory from './ServiceFactoryMemory'
 

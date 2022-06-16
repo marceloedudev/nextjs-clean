@@ -16,4 +16,8 @@ export default class NotificationContext {
   setNotification(notication: Array<any>) {
     this.notications = notication
   }
+
+  getNotifications() {
+    return this.notications
+  }
 }

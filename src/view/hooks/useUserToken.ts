@@ -1,5 +1,5 @@
-import { currentTokenState } from '@/view/atoms'
 import { useRecoilValue } from 'recoil'
+import { currentTokenState } from '../atoms/token-atom'
 
 const useUserToken = () => {
   const { setAccessToken, setRefreshToken } = useRecoilValue(currentTokenState)

@@ -1,4 +1,4 @@
-import HttpClientResponse from '@/infra/http/HttpClientResponse'
+import HttpClientResponse from '@/domain/entity/auth/HttpClientResponse'
 
 export type HttpMethod = 'post' | 'get' | 'put' | 'delete'
 

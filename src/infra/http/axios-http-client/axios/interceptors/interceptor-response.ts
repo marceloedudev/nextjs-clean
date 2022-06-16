@@ -1,3 +1,4 @@
+import TokenFactory from '@/domain/factory/auth/TokenFactory'
 import axios from 'axios'
 
 class AxiosInterceptorResponse {
@@ -5,12 +6,14 @@ class AxiosInterceptorResponse {
   private error: any
   private logged: boolean
   private refreshTokenUseCase: () => Promise<any>
+  private tokenFactory: TokenFactory
 
   constructor({ error, logged, refreshTokenUseCase }) {
     this.error = error
     this.logged = logged
     this.refreshTokenUseCase = refreshTokenUseCase
     this.failedQueue = []
+    this.tokenFactory = new TokenFactory()
   }
 
   private processQueue(error, token = null) {
@@ -38,7 +41,9 @@ class AxiosInterceptorResponse {
           this.failedQueue.push({ resolve, reject })
         })
           .then((token) => {
-            originalRequest.headers['authorization'] = `Bearer ${token}`
+            originalRequest.headers[
+              `${this.tokenFactory.getTokenHeaderName()}`
+            ] = `${this.tokenFactory.getTypeToken()} ${token}`
             return axios(originalRequest)
           })
           .catch((err) => {
@@ -51,9 +56,11 @@ class AxiosInterceptorResponse {
         this.refreshTokenUseCase()
           .then(({ accessToken }) => {
             axios.defaults.headers.common[
-              'authorization'
-            ] = `Bearer ${accessToken}`
-            originalRequest.headers['authorization'] = `Bearer ${accessToken}`
+              `${this.tokenFactory.getTokenHeaderName()}`
+            ] = `${this.tokenFactory.getTypeToken()} ${accessToken}`
+            originalRequest.headers[
+              `${this.tokenFactory.getTokenHeaderName()}`
+            ] = `${this.tokenFactory.getTypeToken()} ${accessToken}`
             this.processQueue(null, accessToken)
             resolve(axios(originalRequest))
           })
@@ -66,7 +73,6 @@ class AxiosInterceptorResponse {
           })
       })
     }
-
     return Promise.reject(this.error)
   }
 }

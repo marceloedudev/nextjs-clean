@@ -6,4 +6,12 @@ export default class ServerSideAdapter {
     res.writeHead(301, { Location: path })
     res.end()
   }
+
+  isBrowser() {
+    return typeof window === 'undefined'
+  }
+
+  isServer() {
+    return !this.isBrowser()
+  }
 }

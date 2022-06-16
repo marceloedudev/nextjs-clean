@@ -1,5 +1,9 @@
 /* eslint-disable import/order */
-import { BuilderValidators, TypesValidator, TypesValidatorEnum } from '../types'
+import {
+  BuilderValidators,
+  TypesValidator,
+  TypesValidatorEnum
+} from '../../../main/interfaces/validators'
 import {
   EmailValidator,
   MatchesValidator,

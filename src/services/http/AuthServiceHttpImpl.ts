@@ -4,7 +4,7 @@ import {
   UserTokensRequest,
   UserTokensResponse
 } from '@/domain/dto/user/tokens-model'
-import HttpClientResponse from '@/infra/http/HttpClientResponse'
+import HttpClientResponse from '@/domain/entity/auth/HttpClientResponse'
 
 interface AuthServiceHttpImpl {
   makeUserToken(

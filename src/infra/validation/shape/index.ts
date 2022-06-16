@@ -1,4 +1,4 @@
-import { Validation } from '../types'
+import { Validation } from '../../../main/interfaces/validators'
 
 class ValidationShape implements Validation {
   private validators = {}
