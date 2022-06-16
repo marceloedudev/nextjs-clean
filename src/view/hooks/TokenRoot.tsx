@@ -6,28 +6,6 @@ import AdaptersFactory from '@/main/factory/AdaptersFactory'
 import { currentTokenState } from '../atoms/token-atom'
 
 const TokenRoot = ({ children }) => {
-  // const [state, setState] = React.useState({
-  //   setAccessToken: (value) => {
-  //     console.log('>>>> batata')
-  //   },
-  //   getAccessToken: () => {},
-  //   setRefreshToken: (value) => {},
-  //   getRefreshToken: () => {}
-  // })
-
-  // React.useEffect(() => {
-  //   const adaptersFactory = new AdaptersFactory()
-  //   const userAccessToken = adaptersFactory.createUserAccessToken()
-  //   const userRefreshToken = adaptersFactory.createUserRefreshToken()
-  //   setState({
-  //     setAccessToken: userAccessToken.set,
-  //     getAccessToken: userAccessToken.get,
-  //     setRefreshToken: userRefreshToken.set,
-  //     getRefreshToken: userRefreshToken.get
-  //   })
-  //   console.log('>>> chamou?')
-  // }, [])
-
   const adaptersFactory = new AdaptersFactory()
   const userAccessToken = adaptersFactory.createUserAccessToken()
   const userRefreshToken = adaptersFactory.createUserRefreshToken()
